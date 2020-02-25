@@ -135,7 +135,7 @@
             var rs = document.getElementById("rs").value;
             var ad,ac,cmrr,cmrrdb;
             if(rc != '' && re!='' && rs != ''){
-                ad = ((100*rc)/(2*rs+2000));
+                ad = ((100*rc)/(rs+1000));
                 ac = ((100*rc)/(rs+1000+202*re));
                 cmrr = ad/ac;
                 cmrrdb = 2*Math.log10(cmrr);
