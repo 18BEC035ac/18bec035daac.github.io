@@ -119,10 +119,10 @@
      </style>
     <script>
         function check(){
-            var rc = document.getElementById("rc").value;
+            var rc1 = document.getElementById("rc1").value;
             var re = document.getElementById("re").value;
             var rs = document.getElementById("rs").value;
-            if(rc != '' && re!='' && rs != ''){
+            if(rc1 != '' && re!='' && rs != ''){
                 document.getElementById('calc').disabled = false;
             }
             else{
@@ -130,7 +130,7 @@
             }
         }
         function calculate(){
-            var rc = document.getElementById("rc").value;
+            var rc = document.getElementById("rc1").value;
             var re = document.getElementById("re").value;
             var rs = document.getElementById("rs").value;
             var ad,ac,cmrr,cmrrdb;
