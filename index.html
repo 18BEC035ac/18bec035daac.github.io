@@ -134,7 +134,7 @@
             var rc = document.getElementById("rc1").value;
             var re = document.getElementById("re").value;
             var rs = document.getElementById("rs").value;
-            var ad,ac,cmrr,cmrrdb;
+            var ad=0,ac=0,cmrr=0,cmrrdb=0;
             if(rc != '' && re!='' && rs != ''){
                 ad = ((100*rc)/(rs+1000));
                 ac = ((100*rc)/(rs+1000+202*re));
@@ -145,12 +145,6 @@
             var disp_ac = "Ac = "+ac;
             var disp_cmrr = "CMRR = "+cmrr;
             var disp_cmrrdb = "CMRR (dB) = "+cmrrdb;
-            // if(vout>vcc*1000)
-            //     document.getElementById('result2').innerHTML='Conclusion : Here Vout>Vcc, hence the op-amp is saturated.';
-            // else if(vcc*1000>vout)
-            //     document.getElementById('result2').innerHTML='Conclusion : Here Vcc>Vout, hence the op-amp is in linear region.';
-            // else
-            //     document.getElementById('result2').innerHTML='';
             document.getElementById('ad').innerHTML=disp_ad;
             document.getElementById('ac').innerHTML=disp_ac;
             document.getElementById('cmrr').innerHTML=disp_cmrr;
@@ -160,5 +154,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
