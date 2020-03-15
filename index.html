@@ -71,6 +71,12 @@
         <div class="row pl-3">
             <p id="cmrrdb">CMRR(dB) =</p>
         </div>
+        <div class="row pl-3">
+            <p id="rin">R<sub>in</sub>(Ω)=</p>
+        </div>
+        <div class="row pl-3">
+            <p id="ro">R<sub>o</sub>(Ω)=</p>
+        </div>
         <img class="img-fluid mt-4" src="daac.png">
     </div>
     <section class="footer" style="background-color:rgba(0,0,0,0.75);">
@@ -133,7 +139,9 @@
             var rc1 = document.getElementById("rc1").value;
             var re = document.getElementById("re").value;
             var rs = document.getElementById("rs").value;
-            if(rc1 != '' && re!='' && rs != ''){
+            var hfe = document.getElementById("hfe").value;
+            var hie = document.getElementById("hie").value;
+            if(rc1 != '' && re!='' && rs != '' && hfe != '' && hie != ''){
                 document.getElementById('calc').disabled = false;
             }
             else{
@@ -144,13 +152,20 @@
             var rc = document.getElementById("rc1").value;
             var re = document.getElementById("re").value;
             var rs = document.getElementById("rs").value;
+            var hfe = document.getElementById("hfe").value;
+            var hie = document.getElementById("hie").value;
             var ad=0,ac=0,cmrr=0,cmrrdb=0;
+            var rin=0,ro=0;
             if(rc != '' && re!='' && rs != ''){
-                ad = ((100*rc)/(rs+1000));
-                ac = ((100*rc)/(rs+1000+202*re));
+                ad = ((hfe*rc)/(2*(rs+hie)));
+                ac = ((hfe*rc)/(rs+hie+(2*re*(1+hfe))));
                 cmrr = ad/ac;
                 cmrrdb = 2*Math.log10(cmrr);
+                rin = 2*(rs+hie);
+                ro = rc;
             }
+            var disp_rin = "R<sub>in</sub>(Ω)="+rin;
+            var disp_ro = "R<sub>o</sub>(Ω)="+ro;
             var disp_ad = "Ad = "+ad;
             var disp_ac = "Ac = "+ac;
             var disp_cmrr = "CMRR = "+cmrr;
@@ -159,6 +174,8 @@
             document.getElementById('ac').innerHTML=disp_ac;
             document.getElementById('cmrr').innerHTML=disp_cmrr;
             document.getElementById('cmrrdb').innerHTML=disp_cmrrdb;
+            document.getElementById('rin').innerHTML=disp_rin;
+            document.getElementById('ro').innerHTML=disp_ro;
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
