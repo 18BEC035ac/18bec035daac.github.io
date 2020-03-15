@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/assets/css/Navigation-Clean.css">
     <link rel="stylesheet" href="/assets/css/Navigation-with-Button.css">
     <link rel="stylesheet" href="/assets/css/styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&display=swap" rel="stylesheet">
 </head>
 
 <body style="margin-left: 0;">
@@ -32,6 +33,9 @@
         <div class="row ml-3" style="margin-top:12vh;">
             <h3>Differential Amplifier</h3>
         </div>
+        <div class="row ml-3 mt-3">
+            <h4 style="font-weight: 400;">D.C. Analysis</h4>
+        </div>
         <div class="row my-4">
             <div class="col-12 col-md-3">
                 <input type="number" class="form-control my-2" placeholder="Enter Rc1 = Rc2 (Ω)" onkeyup="check()" onclick="check()" id="rc1">
@@ -41,6 +45,12 @@
             </div>
             <div class="col-12 col-md-3">
                 <input type="number" class="form-control my-2" placeholder="Enter Rs (Ω)" onkeyup="check()" onclick="check()" id="rs">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter hfe (Ω)" onkeyup="check()" onclick="check()" id="hfe">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter hie (Ω)" onkeyup="check()" onclick="check()" id="hie">
             </div>
             <div class="col-12 col-md-3">
                 <button class="btn btn-primary my-2 ml-2" id="calc" onclick="calculate()" disabled>Calculate</button>
