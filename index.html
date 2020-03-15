@@ -97,7 +97,7 @@
                 <input type="number" class="form-control my-2" placeholder="Enter Rc (Ω)" onkeyup="checkdc()" onclick="checkdc()" id="Rc">
             </div>
             <div class="col-12 col-md-3">
-                <button class="btn btn-primary my-2 ml-2" id="calcdc" onclick="calculatedc()">Calculate</button>
+                <button class="btn btn-primary my-2 ml-2" id="calcdc" onclick="calculatedc()" disabled>Calculate</button>
             </div>
         </div>
             <div class="row ml-2">
@@ -189,11 +189,11 @@
             var a = document.getElementById("a").value;
             var Ie = document.getElementById("Ie").value;
             var Rc = document.getElementById("Rc").value;
-            if(Vcc != '' && Vbe != '' && Rc != '' && a != '' && Vbe != ''){
-                document.getElementById('calc').disabled = true;
+            if(Vcc != '' && Vbe != '' && Rc != '' && a != '' && Ie != ''){
+                document.getElementById('calcdc').disabled = false;
             }
             else{
-                document.getElementById('calc').disabled = true;
+                document.getElementById('calcdc').disabled = true;
             }
         }
         function calculate(){
