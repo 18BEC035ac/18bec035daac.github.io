@@ -77,6 +77,41 @@
         <div class="row pl-3">
             <p id="ro">R<sub>o</sub>(Ω)=</p>
         </div>
+        <div class="row ml-3 mt-3">
+            <h4 style="font-weight: 400;">D.C. Analysis</h4>
+        </div>
+        <div class="row my-4">
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter Vcc (V)" onkeyup="checkdc()" onclick="checkdc()" id="Vcc">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter Vbe (V)" onkeyup="checkdc()" onclick="checkdc()" id="Vbe">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter α " onkeyup="checkdc()" onclick="checkdc()" id="a">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter Ie (A)" onkeyup="checkdc()" onclick="checkdc()" id="Ie">
+            </div>
+            <div class="col-12 col-md-3">
+                <input type="number" class="form-control my-2" placeholder="Enter Rc (Ω)" onkeyup="checkdc()" onclick="checkdc()" id="Rc">
+            </div>
+            <div class="col-12 col-md-3">
+                <button class="btn btn-primary my-2 ml-2" id="calcdc" onclick="calculatedc()">Calculate</button>
+            </div>
+        </div>
+            <div class="row ml-2">
+                <img src="img.jpg" class="m" style="height: 270px; width: auto;">
+            </div>
+            <div class="row pl-3 mt-4">
+                <p id="vce">V<sub>ce</sub> =</p>
+            </div>
+            <div class="row pl-3">
+                <p id="ic">I<sub>c</sub> =</p>
+            </div>
+            <div class="row pl-3">
+                <p id="qp">Q point = </p>
+            </div>
         <img class="img-fluid mt-4" src="daac.png">
     </div>
     <section class="footer" style="background-color:rgba(0,0,0,0.75);">
@@ -148,6 +183,19 @@
                 document.getElementById('calc').disabled = true;
             }
         }
+        function checkdc(){
+            var Vcc = document.getElementById("Vcc").value;
+            var Vbe = document.getElementById("Vbe").value;
+            var a = document.getElementById("a").value;
+            var Ie = document.getElementById("Ie").value;
+            var Rc = document.getElementById("Rc").value;
+            if(Vcc != '' && Vbe != '' && Rc != '' && a != '' && Vbe != ''){
+                document.getElementById('calc').disabled = true;
+            }
+            else{
+                document.getElementById('calc').disabled = true;
+            }
+        }
         function calculate(){
             var rc = document.getElementById("rc1").value;
             var re = document.getElementById("re").value;
@@ -176,6 +224,25 @@
             document.getElementById('cmrrdb').innerHTML=disp_cmrrdb;
             document.getElementById('rin').innerHTML=disp_rin;
             document.getElementById('ro').innerHTML=disp_ro;
+        }
+        function calculatedc(){
+            var Vcc = document.getElementById("Vcc").value;
+            var Vbe = document.getElementById("Vbe").value;
+            var a = document.getElementById("a").value;
+            var Ie = document.getElementById("Ie").value;
+            var Rc = document.getElementById("Rc").value;
+            var qpoint=0,Vce=0,Ic=0;
+            if(Vcc != '' && Vbe != '' && Rc != '' && a != '' && Vbe != ''){
+                Ic= a*Ie;
+                Vce = (Vcc-(Ic*Rc)+Vbe);
+            }
+            var qp = "Q point = ("+Vce+","+Ic+")";
+            document.getElementById('qp').innerHTML = qp; 
+            var disp_Ic = "Ic(A)="+Ic;
+            var disp_Vce = "Vce(V)="+Vce;
+            document.getElementById('ic').innerHTML=disp_Ic;
+            document.getElementById('vce').innerHTML=disp_Vce;
+            // document.getElementById('').innerHTML=disp_Vce;
         }
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
